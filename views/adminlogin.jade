@@ -1,0 +1,12 @@
+﻿extends layout
+block content
+
+    .thumbnail.div.col-md-offset-5.col-md-3(ng-app="login",ng-controller="logincontroller" , data-parsley-validate)
+        fieldset 
+            label(for="txtLabel") #{title} :
+            input.thumbnail.form-control(type="text", ng-model="txtUserName",id="txtUserName",  placeholder ="Enter User Name..." )
+            input.thumbnail.form-control(type="password", ng-model="txtPassword",id="txtPassword",  placeholder ="Enter Your Password ...", data-trigger="change")
+            label(for="txtstatus") {{txtstatus}} 
+            div.row
+                .row.col-md-6
+                input.btn.btn-success(type="button" value="Login" id="btnLogin" ng-click="login()")

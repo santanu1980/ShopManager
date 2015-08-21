@@ -1,0 +1,116 @@
+doctype html
+html(lang='en')
+    head
+        title Example of Bootstrap 3 Responsive Navbar
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css')
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js')
+        script(type='text/javascript' src='/javascripts/libs/angular.min.js')
+        script(type='text/javascript' src='/javascripts/libs/angular-route.min.js')
+        script(type='text/javascript' src='/javascripts/libs/parsley.js')
+        script(type='text/javascript' src='/javascripts/libs/parsley.min.js')
+        script(type='text/javascript' src='/javascripts/order/createorder.js')
+        script(type='text/javascript' src='/javascripts/order/vieworder.js')
+        script(type='text/javascript' src='/javascripts/order/adminlogin.js')
+        script(type='text/javascript' src='/javascripts/order/payment.js')
+        script(type='text/javascript' src='/javascripts/order/orderhistory.js')
+
+        style(type='text/css').
+            .navbar {
+                margin-top: 20px;
+            }
+            .h2 {
+                margin: 0;
+                color: #666;
+                padding-top: 120px;
+                font-size: 52px;
+                font-family: "trebuchet ms", sans-serif;
+            }
+
+            .item {
+                background: #333;
+                text-align: center;
+                height: 400px !important;
+            }
+
+            .carousel {
+                margin-top: 20px;
+            }
+
+            .bs-example {
+                margin: 20px;
+            }
+            .thumbnailstyle {
+                margin: 30px;
+                horiz-align: left;
+                vertical-align: middle;
+                border: 20px;
+                box-shadow: darkslategrey;
+                font-size: medium;
+            }
+
+    body
+        .container()
+            nav.navbar.navbar-inverse(role='navigation')
+                // Brand and toggle get grouped for better mobile display
+                .navbar-header
+                    button.navbar-toggle(type='button', data-target='#navbarCollapse', data-toggle='collapse')
+                        span.sr-only Toggle navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.navbar-brand(href='#') ChalBhaja Duniya.Com
+                // Collection of nav links, forms, and other content for toggling
+                #navbarCollapse.collapse.navbar-collapse
+                    ul.nav.navbar-nav
+                        li.active
+                            a(href='/') Home
+                        li
+                            a(href='/about') About
+                        li.dropdown
+                            a.dropdown-toggle(data-toggle='dropdown', href='#')
+                                | Order
+                                b.caret
+                            ul.dropdown-menu(role='menu')
+                                li
+                                    a(href='/createorder') Create Order
+                                li
+                                    a(href='/vieworder') View Oders
+                                li
+                                    a(href='/historyorder') Oder History
+
+                    form.navbar-form.navbar-left(role='search')
+                        .form-group
+                            input.form-control(type='text', placeholder='Search' ng-model='searchText')
+                    ul.nav.navbar-nav.navbar-right
+                        li
+
+                        li.dropdowns(id='idUser')
+                            a.dropdown-toggle(data-toggle='dropdown', href='#')
+                                | Welcome #{user}  
+                                b.caret
+                            ul.dropdown-menu(role='menu')
+                                li
+                                    a(href='/createorder') Change Password
+                                script(type='text/javascript').
+                                     $(function() {
+                                        $.get('/User', {}, function(data){
+                                            if(data=="")
+                                            {
+                                                $('#idUser').hide();
+                                            }
+                                        });
+                                        $.get('/IsAdmin', {}, function(data){
+                                            if(data!=true)
+                                            {
+                                                $('#idAdmin').hide();
+                                            }
+                                        });
+                                     });
+                                li(id='idAdmin')
+                                    a(href='/vieworder') Add User
+                                li
+                                    a(href='/adminlogin') Log Off
+
+        block content

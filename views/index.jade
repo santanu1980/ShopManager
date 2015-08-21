@@ -1,0 +1,39 @@
+extends layout
+
+
+block content
+    body
+            .bs-example
+                #myCarousel.carousel.slide(data-interval='3000', data-ride='carousel')
+                    // Carousel indicators
+                    ol.carousel-indicators
+                        li.active(data-target='#myCarousel', data-slide-to='0')
+                        li(data-target='#myCarousel', data-slide-to='1')
+                        li(data-target='#myCarousel', data-slide-to='2')
+                    // Wrapper for carousel items
+                    .carousel-inner
+                        .active.item
+                            img.img-responsive(src='/images/img1.jpg', alt='Flower' )
+                            .carousel-caption
+                                h3 Delicious Food Item 1
+                                p Use above 'Order' button.
+                        .item
+                            img.img-responsive(src='/images/img2.jpg', alt='Flower' )
+                            .carousel-caption
+                                h3 Delicious Food Item 2
+                                p Use above 'Order' button.
+                        .item
+                            img.img-responsive(src='/images/img3.jpg', alt='Flower' )
+                            .carousel-caption
+                                h3 Delicious Food Item 3
+                                p Use above 'Order' button.
+                    // Carousel controls
+                    a.carousel-control.left(href='#myCarousel', data-slide='prev')
+                        span.glyphicon.glyphicon-chevron-left
+                    a.carousel-control.right(href='#myCarousel', data-slide='next')
+                        span.glyphicon.glyphicon-chevron-right
+
+
+        .panel-footer
+            h2
+            marquee This Website is developeed by Santanu Dutta

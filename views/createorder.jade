@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    .panel.panel-info
+      .panel-heading
+        h3.panel-title #{title}
+
+
+    .thumbnail.div.col-md-offset-5.col-md-3(ng-app="order",ng-controller="ordercontroller" , data-parsley-validate)
+        fieldset 
+            label(for="txtLabel") #{title} :
+            input.thumbnail.form-control(type="text", ng-model="txtUserName",id="txtUserName",  placeholder ="Enter User Name..." )
+            input.thumbnail.form-control(type="email", ng-model="txtEmail",id="txtEmail",  placeholder ="Enter Your Email ...", data-trigger="change" , data-required="true", data-type="email")
+            select.thumbnail.form-control 
+                option(value='1') ChalBhaja
+            input.thumbnail.form-control(type="number", ng-model="txtnumber",id="txtnumber",  placeholder ="How Many packets ...", required, data-required-msg='Display Name is required')
+            div.row
+                .row.col-md-6
+                input.btn.btn-success(type="button" value="Order" id="btnOrder" ng-click="createOrder()")
+
+

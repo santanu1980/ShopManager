@@ -1,0 +1,29 @@
+extends layout
+block content
+    .panel.panel-info
+      .panel-heading
+        h3.panel-title #{title}
+    .thumbnail.div.col-md-offset-1.col-md-0
+      table.table.table-striped( ng-app="vieworder", ng-controller="viewordercontroller", border='1', cellpadding='7', cellspacing='7')
+        thead
+          tr
+            th(width="10%") Customer Name
+            th(width="10%") Order Type
+            th(width="10%") Orders 
+            th(width="10%") Order Date
+            th(width="10%") Order Status
+            th(width="10%") Payment
+            td(width="10%") 
+        tbody
+          tr(ng-repeat='Order in Orders | filter:searchText')
+            td {{ Order.custname }}
+            td {{ Order.ordertype }}
+            td {{ Order.noorder }}
+            td {{ Order.orderdate }}
+            td {{ Order.orderstatus }}
+            td {{ Order.payment }}
+
+            td
+
+              a.btn.btn-small.btn-primary(ng-click='cancelOrder(Order.id)') cancel
+
